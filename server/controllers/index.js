@@ -1,5 +1,6 @@
 var models = require('../models');
 var connection = require('../db/index.js');
+var orm = require('../../orm-resources/orm');
 
 module.exports = {
   messages: {
@@ -14,11 +15,7 @@ module.exports = {
     }, // a function which handles a get request for all messages
     post: function(req, res) {
       console.log('req.body', req.body);
-      connection.query('INSERT INTO messages SET ?', req.body, function(err, res) {
-        if (err) {
-          throw err;
-        }
-      });
+     orm.handleMessage(req.body);
       res.json({});
     } // a function which handles posting a message to the database
   },
@@ -38,11 +35,12 @@ module.exports = {
     }, // a function which handles a get request for all users
     post: function(req, res) {
       console.log('req.body', req.body);
-      connection.query('INSERT INTO users SET ?', req.body, function(err, res) {
-        if (err) {
-          throw err;
-        }
-      });
+      orm.handleUser(req.body);
+      // connection.query('INSERT INTO users SET ?', req.body, function(err, res) {
+      //   if (err) {
+      //     throw err;
+      //   }
+      // });
       res.json({});
     } // a function which handles posting a user to the database
   }

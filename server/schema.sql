@@ -16,22 +16,24 @@ USE chat;
 -- );
 
 CREATE TABLE messages (
-  ID int AUTO_INCREMENT,
-  text varchar(140),
-  username varchar(40),
-  Timestamp timestamp,
-  roomname varchar(40),
+  id int NOT NULL AUTO_INCREMENT,
+  text varchar(140) NOT NULL,
+  username char(40),
+  createdAt timestamp,
+  updatedAt timestamp,
+  roomname char(40),
   PRIMARY KEY(ID)
   -- FOREIGN KEY(UserID) REFERENCES users(ID),
   -- FOREIGN KEY(RoomID) REFERENCES rooms(ID) 
 );
 
-INSERT INTO messages (text, username, roomname) VALUES ('Hi', 'Bob', 'lobby');
+-- INSERT INTO messages (text, username, roomname) VALUES ('Hi', 'Bob', 'lobby');
 
 CREATE TABLE users (
-  ID int AUTO_INCREMENT,
-  username varchar(40),
-  Timestamp timestamp,
+  id int NOT NULL AUTO_INCREMENT,
+  username char(40),
+  createdAt timestamp,
+  updatedAt timestamp,
   PRIMARY KEY(ID)
 );
 -- CREATE TABLE users_rooms (

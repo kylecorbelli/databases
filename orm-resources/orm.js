@@ -10,33 +10,32 @@ var db = new Sequelize('chat', 'root', 'p');
 
 /* first define the data structure by giving property names and datatypes
  * See http://sequelizejs.com for other datatypes you can use besides STRING. */
-var User = db.define('User', {
+var User = db.define('users', {
+  id: Sequelize.INTEGER,
   username: Sequelize.STRING
 });
 
-var Message = db.define('Message', {
+var Message = db.define('messages', {
   id: Sequelize.INTEGER,
+  username: Sequelize.STRING,
   text: Sequelize.STRING,
   roomname: Sequelize.STRING
 });
 
 /* .sync() makes Sequelize create the database table for us if it doesn't
  *  exist already: */
-User.sync().success(function() {
-  /* This callback function is called once sync succeeds. */
-
-  // now instantiate an object and save it:
-  var newUser = User.build({username: 'Jean Valjean'});
-  newUser.save().success(function() {
-
-    /* This callback function is called once saving succeeds. */
-
-    // Retrieve objects from the database:
-    User.findAll({ where: {username: 'Jean Valjean'} }).success(function(users) {
-      // This function is called back with an array of matches.
-      for (var i = 0; i < users.length; i++) {
-        console.log(users[i].username + ' exists');
-      }
-    });
+module.exports.handleUser = function(body){
+User.sync().then(function() {
+  User.build(body).save().then(function(){
+    console.log('Added user');
   });
 });
+};
+
+module.exports.handleMessage = function(body){
+Message.sync().then(function() {
+  Message.build(body).save().then(function(){
+    console.log('Added user');
+  });
+});
+};

@@ -28,7 +28,12 @@ CREATE TABLE messages (
 
 INSERT INTO messages (text, username, roomname) VALUES ('Hi', 'Bob', 'lobby');
 
-
+CREATE TABLE users (
+  ID int AUTO_INCREMENT,
+  username varchar(40),
+  Timestamp timestamp,
+  PRIMARY KEY(ID)
+);
 -- CREATE TABLE users_rooms (
 --   UserID int,
 --   RoomID int,

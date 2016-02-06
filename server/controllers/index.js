@@ -9,25 +9,41 @@ module.exports = {
           throw err;
         }
         // set headers and such
-        res.json({
-          results: rows
-        });
+        res.json(rows);
       });
     }, // a function which handles a get request for all messages
     post: function(req, res) {
+      console.log('req.body', req.body);
       connection.query('INSERT INTO messages SET ?', req.body, function(err, res) {
         if (err) {
           throw err;
         }
       });
+      res.json({});
     } // a function which handles posting a message to the database
   },
 
   users: {
     // Ditto as above
     get: function(req, res) {
-      console.log('hi');
+      connection.query('SELECT * FROM users', function(err, rows, fields) {
+        if (err) {
+          throw err;
+        }
+        // set headers and such
+        res.json({
+          results: rows
+        });
+      });
     }, // a function which handles a get request for all users
-    post: function(req, res) {} // a function which handles posting a user to the database
+    post: function(req, res) {
+      console.log('req.body', req.body);
+      connection.query('INSERT INTO users SET ?', req.body, function(err, res) {
+        if (err) {
+          throw err;
+        }
+      });
+      res.json({});
+    } // a function which handles posting a user to the database
   }
 };

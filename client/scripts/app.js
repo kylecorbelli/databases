@@ -35,8 +35,6 @@ var app = {
   send: function(data) {
     app.startSpinner();
     // Clear messages input
-    app.$message.val('');
-
     // POST the message to the server
     $.ajax({
       url: app.server,
@@ -54,9 +52,8 @@ var app = {
   },
   fetch: function(animate) {
     $.get(app.server, function(data) {
-      console.log(data);
-      app.populateRooms(data.results);
-      app.populateMessages(data.results, animate);
+      app.populateRooms(data);
+      app.populateMessages(data, animate);
     });
     // $.ajax({
     //   url: app.server,

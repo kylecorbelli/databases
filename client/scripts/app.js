@@ -55,35 +55,6 @@ var app = {
       app.populateRooms(data);
       app.populateMessages(data, animate);
     });
-    // $.ajax({
-    //   url: app.server,
-    //   type: 'GET',
-    //   contentType: 'application/json',
-    //   data: data,
-    //   success: function(data) {
-    //     // Don't bother if we have nothing to work with
-    //     // if (!data.results || !data.results.length) { return; }
-
-    //     // Get the last message
-    //     var mostRecentMessage = data.results[data.results.length-1];
-    //     var displayedRoom = $('.chat span').first().data('roomname');
-    //     app.stopSpinner();
-    //     // Only bother updating the DOM if we have a new message
-    //     // if (mostRecentMessage.objectId !== app.lastMessageId || app.roomname !== displayedRoom) {
-    //       // Update the UI with the fetched rooms
-    //       app.populateRooms(data.results);
-
-    //       // Update the UI with the fetched messages
-    //       app.populateMessages(data.results, animate);
-
-    //       // Store the ID of the most recent message
-    //     //   app.lastMessageId = mostRecentMessage.objectId;
-    //     // }
-    //   },
-    //   error: function(data) {
-    //     console.error('chatterbox: Failed to fetch messages');
-    //   }
-    // });
   },
 
   clearMessages: function() {
@@ -141,7 +112,7 @@ var app = {
   },
 
   addMessage: function(data) {
-    if (!data.roomname){
+    if (!data.roomname) {
       data.roomname = 'lobby';
     }
 
@@ -156,7 +127,7 @@ var app = {
       $username.text(data.username + ': ').attr('data-username', data.username).attr('data-roomname', data.roomname).appendTo($chat);
 
       // Add the friend class
-      if (app.friends[data.username] === true){
+      if (app.friends[data.username] === true) {
         $username.addClass('friend');
       }
 
@@ -219,7 +190,7 @@ var app = {
     };
 
     app.send(message);
-
+    app.$message.val('');
     // Stop the form from submitting
     evt.preventDefault();
   },

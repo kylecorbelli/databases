@@ -3,12 +3,6 @@ CREATE DATABASE chat;
 
 USE chat;
 
--- CREATE TABLE users (
---   ID int AUTO_INCREMENT,
---   Name varchar(40),
---   PRIMARY KEY(ID)
--- );
-
 -- CREATE TABLE rooms (
 --   ID int AUTO_INCREMENT,
 --   Name varchar(40),
@@ -27,7 +21,8 @@ CREATE TABLE messages (
   -- FOREIGN KEY(RoomID) REFERENCES rooms(ID) 
 );
 
--- INSERT INTO messages (text, username, roomname) VALUES ('Hi', 'Bob', 'lobby');
+-- TEST MESSAGE
+INSERT INTO messages (text, username, roomname) VALUES ('Hi', 'Bob', 'lobby');
 
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
@@ -42,11 +37,6 @@ CREATE TABLE users (
 --   FOREIGN KEY(UserID) REFERENCES users(ID),
 --   FOREIGN KEY(RoomID) REFERENCES rooms(ID) 
 -- );
-
-/* Create other tables and define schemas for them here! */
-
-
-
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql

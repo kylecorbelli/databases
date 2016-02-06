@@ -8,8 +8,8 @@ module.exports = {
 
   users: {
     // Ditto as above.
-    get: function () {},
-    post: function () {}
+    get: function () {}, // a function which produces all users
+    post: function () {} // a function which can be used to insert a user into the database
   }
 };
 

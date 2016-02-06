@@ -24,18 +24,18 @@ var Message = db.define('messages', {
 
 /* .sync() makes Sequelize create the database table for us if it doesn't
  *  exist already: */
-module.exports.handleUser = function(body){
-User.sync().then(function() {
-  User.build(body).save().then(function(){
-    console.log('Added user');
+module.exports.handleUser = function(body) {
+  User.sync().then(function() {
+    User.build(body).save().then(function() {
+      console.log('Added user');
+    });
   });
-});
 };
 
-module.exports.handleMessage = function(body){
-Message.sync().then(function() {
-  Message.build(body).save().then(function(){
-    console.log('Added user');
+module.exports.handleMessage = function(body) {
+  Message.sync().then(function() {
+    Message.build(body).save().then(function() {
+      console.log('Added user');
+    });
   });
-});
 };

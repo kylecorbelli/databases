@@ -15,7 +15,7 @@ module.exports = {
     }, // a function which handles a get request for all messages
     post: function(req, res) {
       console.log('req.body', req.body);
-     orm.handleMessage(req.body);
+      orm.handleMessage(req.body);
       res.json({});
     } // a function which handles posting a message to the database
   },
